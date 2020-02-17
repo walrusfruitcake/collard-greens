@@ -1,0 +1,5 @@
+[git-together]
+	domain = gmail.com
+[git-together "authors"]
+	ael = "Anne LoVerso; anne.loverso@gmail.com"
+	gg = "George Gelashvili; walrusfruitcake@users.noreply.github.com"
