@@ -1,9 +1,21 @@
 import React, { ChangeEvent } from 'react';
+import {subscribeToText} from './api/index'
+import {emitText} from './api/index'
 
 const TextEditor: React.FC = () => {
 
     const [text, setText] = React.useState("");
     const [displayText, setDisplayText] = React.useState("");
+
+    React.useEffect(() => {
+        subscribeToText((receivedText: string) => {
+            console.log('hella: ', receivedText)    
+            setText(receivedText)
+            setDisplayText(receivedText)
+        })
+    }, []) //only invoke on state-change to [], i.e. once ever.
+
+    // receive a broadcast -> update text
 
     const submitText = () => {
         setDisplayText(text);
@@ -12,6 +24,7 @@ const TextEditor: React.FC = () => {
 
     const updateText = (event: ChangeEvent<HTMLTextAreaElement>) => {
         setText(event.target.value)
+        emitText(event.target.value)
     }
 
     return (
