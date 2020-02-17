@@ -19,6 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:once": "CI=1 npm test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
